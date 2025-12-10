@@ -2,7 +2,7 @@
 /**
  * Asset management class
  *
- * @package SBA
+ * @package SIMPBLAN
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Handles enqueueing of editor and frontend assets
  */
-class SBA_Enqueue {
+class SIMPBLAN_Enqueue {
 
 	/**
 	 * Initialize hooks
@@ -29,29 +29,29 @@ class SBA_Enqueue {
 		// Editor JS
 		wp_enqueue_script(
 			'simple-block-animations-editor',
-			SBA_URL . 'build/editor.js',
+			SIMPBLAN_URL . 'build/editor.js',
 			array(
 				'wp-blocks',
 				'wp-dom',
 				'wp-i18n'
 			),
-			SBA_VERSION,
+			SIMPBLAN_VERSION,
 			true
 		);
 
 		// Editor CSS
 		wp_enqueue_style(
 			'simple-block-animations-editor',
-			SBA_URL . 'build/editor.css',
+			SIMPBLAN_URL . 'build/editor.css',
 			array( 'wp-edit-blocks' ),
-			SBA_VERSION
+			SIMPBLAN_VERSION
 		);
 
 		// Set script translations
 		wp_set_script_translations(
 			'simple-block-animations-editor',
 			'simple-block-animations',
-			SBA_PATH . 'languages'
+			SIMPBLAN_PATH . 'languages'
 		);
 	}
 
@@ -67,18 +67,18 @@ class SBA_Enqueue {
 		// Frontend JS (Intersection Observer)
 		wp_enqueue_script(
 			'simple-block-animations-frontend',
-			SBA_URL . 'build/frontend.js',
+			SIMPBLAN_URL . 'build/frontend.js',
 			array(),
-			SBA_VERSION,
+			SIMPBLAN_VERSION,
 			true
 		);
 
 		// Frontend CSS (animations)
 		wp_enqueue_style(
 			'simple-block-animations-frontend',
-			SBA_URL . 'build/frontend.css',
+			SIMPBLAN_URL . 'build/frontend.css',
 			array(),
-			SBA_VERSION
+			SIMPBLAN_VERSION
 		);
 	}
 

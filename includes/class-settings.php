@@ -2,7 +2,7 @@
 /**
  * Plugin settings management
  *
- * @package SBA
+ * @package SIMPBLAN
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,12 +12,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Handles plugin settings and options page
  */
-class SBA_Settings {
+class SIMPBLAN_Settings {
 
 	/**
 	 * Option name in database
 	 */
-	const OPTION_NAME = 'sba_settings';
+	const OPTION_NAME = 'simpblan_settings';
 
 	/**
 	 * Initialize hooks
@@ -45,7 +45,7 @@ class SBA_Settings {
 	 */
 	public static function register_settings() {
 		register_setting(
-			'simple_block_animations_settings_group',
+			'simpblan_settings_group',
 			self::OPTION_NAME,
 			array(
 				'type'              => 'array',
@@ -55,7 +55,7 @@ class SBA_Settings {
 		);
 
 		add_settings_section(
-			'simple_block_animations_main',
+			'simpblan_main',
 			__( 'Configuration générale', 'simple-block-animations' ),
 			array( __CLASS__, 'render_main_section' ),
 			'simple-block-animations'
@@ -66,7 +66,7 @@ class SBA_Settings {
 			__( 'Types de blocs supportés', 'simple-block-animations' ),
 			array( __CLASS__, 'render_block_types_field' ),
 			'simple-block-animations',
-			'simple_block_animations_main'
+			'simpblan_main'
 		);
 
 		add_settings_field(
@@ -74,7 +74,7 @@ class SBA_Settings {
 			__( 'Durée par défaut', 'simple-block-animations' ),
 			array( __CLASS__, 'render_default_duration_field' ),
 			'simple-block-animations',
-			'simple_block_animations_main'
+			'simpblan_main'
 		);
 	}
 
@@ -129,7 +129,7 @@ class SBA_Settings {
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 			<form action="options.php" method="post">
 				<?php
-				settings_fields( 'simple_block_animations_settings_group' );
+				settings_fields( 'simpblan_settings_group' );
 				do_settings_sections( 'simple-block-animations' );
 				submit_button();
 				?>

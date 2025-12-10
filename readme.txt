@@ -2,7 +2,7 @@
 Contributors: valentingrenier
 Tags: gutenberg, blocks, animation, scroll, effects
 Requires at least: 5.8
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.4
 Stable tag: 1.0.1
 License: GPLv2 or later
@@ -26,6 +26,17 @@ Simple block animations adds scroll-triggered animations to WordPress Gutenberg 
 **Supported Blocks:**
 
 Works with all WordPress core blocks and Meta Box blocks.
+
+**Development:**
+
+The source code for this plugin is available on GitHub: https://github.com/valentin-grenier/simple-animations-for-gutenberg
+
+The plugin uses npm and webpack to compile JavaScript and CSS files. Source files are located in the `src/` directory, and compiled files are in the `build/` directory.
+
+To build from source:
+1. Install dependencies: `npm install`
+2. Build for production: `npm run build`
+3. Build for development: `npm run dev`
 
 == Installation ==
 

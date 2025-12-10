@@ -21,32 +21,32 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'SBA_VERSION', '1.0.0' );
-define( 'SBA_PATH', plugin_dir_path( __FILE__ ) );
-define( 'SBA_URL', plugin_dir_url( __FILE__ ) );
+define( 'SIMPBLAN_VERSION', '1.0.0' );
+define( 'SIMPBLAN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'SIMPBLAN_URL', plugin_dir_url( __FILE__ ) );
 
-require_once SBA_PATH . 'includes/class-enqueue.php';
-require_once SBA_PATH . 'includes/class-blocks.php';
-require_once SBA_PATH . 'includes/class-settings.php';
+require_once SIMPBLAN_PATH . 'includes/class-enqueue.php';
+require_once SIMPBLAN_PATH . 'includes/class-blocks.php';
+require_once SIMPBLAN_PATH . 'includes/class-settings.php';
 
 /**
  * Initialize plugin
  */
-function sba_init() {
-	SBA_Enqueue::init();
-	SBA_Blocks::init();
-	SBA_Settings::init();
+function simpblan_init() {
+	SIMPBLAN_Enqueue::init();
+	SIMPBLAN_Blocks::init();
+	SIMPBLAN_Settings::init();
 }
-add_action( 'plugins_loaded', 'sba_init' );
+add_action( 'plugins_loaded', 'simpblan_init' );
 
 /**
  * Activation hook
  */
-function sba_activate() {
+function simpblan_activate() {
 	// Set default options
-	if ( ! get_option( SBA_Settings::OPTION_NAME ) ) {
+	if ( ! get_option( SIMPBLAN_Settings::OPTION_NAME ) ) {
 		add_option(
-			SBA_Settings::OPTION_NAME,
+			SIMPBLAN_Settings::OPTION_NAME,
 			array(
 				'enabled_block_types' => array( 'core', 'meta-box' ),
 				'default_duration'    => 0.6,
@@ -57,12 +57,12 @@ function sba_activate() {
 
 	flush_rewrite_rules();
 }
-register_activation_hook( __FILE__, 'sba_activate' );
+register_activation_hook( __FILE__, 'simpblan_activate' );
 
 /**
  * Deactivation hook
  */
-function sba_deactivate() {
+function simpblan_deactivate() {
 	flush_rewrite_rules();
 }
-register_deactivation_hook( __FILE__, 'sba_deactivate' );
+register_deactivation_hook( __FILE__, 'simpblan_deactivate' );

@@ -2,7 +2,7 @@
 /**
  * Block registration and management
  *
- * @package SBA
+ * @package SIMPBLAN
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Handles block-related functionality
  */
-class SBA_Blocks {
+class SIMPBLAN_Blocks {
 
 	/**
 	 * Initialize hooks
