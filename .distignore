@@ -5,6 +5,7 @@
 .gitignore
 .distignore
 .eslintrc.js
+~
 
 # Node.js
 /node_modules
