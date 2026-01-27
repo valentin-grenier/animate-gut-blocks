@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, animation, scroll, effects
 Requires at least: 5.8
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.2.1
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,12 +70,20 @@ It's designed for Gutenberg blocks. It won't work with Elementor, Divi, or other
 
 == Changelog ==
 
+= 2.0.0 =
+- Respected pre-existing animation attributes from block.json to allow default animations in custom blocks
+
+
 = 1.2.1 =
-- Added dynamic blocks support
+* Update to version 1.2.1
 
 
 = 1.2.0 =
-- Added support for dynamic blocks
+* Update to version 1.2.0
+
+
+= 1.2.0 =
+- Added dynamic blocks support
 
 
 = 1.1.2 =

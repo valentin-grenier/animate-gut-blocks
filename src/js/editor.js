@@ -12,29 +12,45 @@ if (!window.simpleBlockAnimationsAttributesFiltersAdded) {
 
 	/**
 	 * Add animation attributes to all blocks
+	 * Respects existing animation attributes if already defined in block.json
 	 */
 	function addAnimationAttributes(settings, name) {
-		// Apply to all blocks
+		// Check if block already has animation attributes defined
+		const hasIsAnimated = settings.attributes && settings.attributes.isAnimated;
+		const hasAnimationType = settings.attributes && settings.attributes.animationType;
+		const hasAnimationDuration = settings.attributes && settings.attributes.animationDuration;
+		const hasAnimationDelay = settings.attributes && settings.attributes.animationDelay;
+
+		// Only add attributes that don't already exist
 		return {
 			...settings,
 			attributes: {
 				...settings.attributes,
-				isAnimated: {
-					type: 'boolean',
-					default: false,
-				},
-				animationType: {
-					type: 'string',
-					default: 'fade-in',
-				},
-				animationDuration: {
-					type: 'number',
-					default: 0.6,
-				},
-				animationDelay: {
-					type: 'number',
-					default: 0,
-				},
+				// Only add if not already defined
+				...(!hasIsAnimated && {
+					isAnimated: {
+						type: 'boolean',
+						default: false,
+					},
+				}),
+				...(!hasAnimationType && {
+					animationType: {
+						type: 'string',
+						default: 'fade-in',
+					},
+				}),
+				...(!hasAnimationDuration && {
+					animationDuration: {
+						type: 'number',
+						default: 0.6,
+					},
+				}),
+				...(!hasAnimationDelay && {
+					animationDelay: {
+						type: 'number',
+						default: 0,
+					},
+				}),
 			},
 		};
 	}
