@@ -34,13 +34,6 @@ class SIMPBLAN_Blocks {
 			return $block_content;
 		}
 
-		// Only process core and meta-box blocks
-		if ( ! isset( $block['blockName'] ) ||
-			 ( ! str_starts_with( $block['blockName'], 'core/' ) &&
-			   ! str_starts_with( $block['blockName'], 'meta-box/' ) ) ) {
-			return $block_content;
-		}
-
 		// Add data attributes for JS
 		$animation_type = $block['attrs']['animationType'] ?? 'fade-in';
 		$data_attr      = sprintf(
