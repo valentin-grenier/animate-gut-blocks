@@ -73,6 +73,42 @@ Simple block animations is perfect for creating engaging, modern websites with m
 5. Adjust duration and delay (optional)
 6. Publish and watch your blocks come to life!
 
+## For Developers: Setting Default Animations in Custom Blocks
+
+You can configure custom blocks to have animations enabled by default by adding animation attributes to your block's `block.json` file:
+
+```json
+{
+  "attributes": {
+    "isAnimated": {
+      "type": "boolean",
+      "default": true
+    },
+    "animationType": {
+      "type": "string",
+      "default": "fade-in-up"
+    },
+    "animationDuration": {
+      "type": "number",
+      "default": 0.8
+    },
+    "animationDelay": {
+      "type": "number",
+      "default": 0.2
+    }
+  }
+}
+```
+
+**Available animation types:**
+- `fade-in`
+- `fade-in-up`
+- `fade-in-down`
+- `fade-in-left`
+- `fade-in-right`
+
+When these attributes are defined in your block.json, the Simple Block Animations plugin will respect them and automatically enable animations with your specified defaults when the block is inserted. This saves developers from having to manually configure animations for each block instance.
+
 ## How It Works
 
 The plugin uses the modern Intersection Observer API to detect when blocks enter the viewport, ensuring smooth performance even on content-heavy pages. It adds data attributes to animated blocks and applies CSS animations with GPU acceleration for smooth performance.

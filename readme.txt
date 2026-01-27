@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, animation, scroll, effects
 Requires at least: 5.8
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.0.0
+Stable tag: 2.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,10 @@ No. The plugin uses native CSS animations and Intersection Observer API. Assets 
 
 It's designed for Gutenberg blocks. It won't work with Elementor, Divi, or other page builders.
 
+= Can I set default animations for my custom blocks? =
+
+Yes! Developers can add animation attributes to their block.json file. Add `isAnimated`, `animationType`, `animationDuration`, and `animationDelay` attributes with your desired defaults. The plugin will respect these values, automatically enabling animations when the block is inserted. Available animation types: fade-in, fade-in-up, fade-in-down, fade-in-left, fade-in-right.
+
 == Screenshots ==
 
 1. Animation controls in the block inspector
@@ -69,6 +73,10 @@ It's designed for Gutenberg blocks. It won't work with Elementor, Divi, or other
 4. Example of fade-in animation
 
 == Changelog ==
+
+= 2.0.2 =
+- Updated documentation with "For developers" section regarding default animation attributes for custom blocks
+
 
 = 2.0.0 =
 - Respected pre-existing animation attributes from block.json to allow default animations in custom blocks
