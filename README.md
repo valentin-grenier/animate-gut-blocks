@@ -18,7 +18,7 @@ Simple block animations is perfect for creating engaging, modern websites with m
 * **Customizable Settings** - Control animation duration and delay for each block
 * **Scroll Trigger** - Animations activate when blocks enter the viewport
 * **Performance Optimized** - Lightweight JavaScript with Intersection Observer API
-* **Works with Core Blocks** - Compatible with all WordPress core blocks
+* **Universal Block Support** - Compatible with all WordPress blocks (core, third-party, and custom blocks)
 * **Block-Level Control** - Enable/disable animations per block
 
 ## Supported Animation Types

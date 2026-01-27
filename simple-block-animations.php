@@ -48,9 +48,8 @@ function simpblan_activate() {
 		add_option(
 			SIMPBLAN_Settings::OPTION_NAME,
 			array(
-				'enabled_block_types' => array( 'core', 'meta-box' ),
-				'default_duration'    => 0.6,
-				'default_delay'       => 0,
+				'default_duration' => 0.6,
+				'default_delay'    => 0,
 			)
 		);
 	}

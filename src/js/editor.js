@@ -11,14 +11,10 @@ if (!window.simpleBlockAnimationsAttributesFiltersAdded) {
 	window.simpleBlockAnimationsAttributesFiltersAdded = true;
 
 	/**
-	 * Add animation attributes to all blocks starting with "core/"
+	 * Add animation attributes to all blocks
 	 */
 	function addAnimationAttributes(settings, name) {
-		// Only apply to core blocks
-		if (!name.startsWith('core/')) {
-			return settings;
-		}
-
+		// Apply to all blocks
 		return {
 			...settings,
 			attributes: {
@@ -44,15 +40,15 @@ if (!window.simpleBlockAnimationsAttributesFiltersAdded) {
 	}
 
 	/**
-	 * Add animation controls to core and meta-box blocks
+	 * Add animation controls to all blocks
 	 */
 	const withAnimationControls = createHigherOrderComponent((BlockEdit) => {
 		return (props) => {
 			const { name, attributes, setAttributes } = props;
 			const { isAnimated, animationType, animationDuration, animationDelay } = attributes;
 
-			// Only apply to core and meta-box blocks
-			if (!name.startsWith('core/')) {
+			// Skip if attributes are not available (edge case for some blocks)
+			if (!attributes || typeof isAnimated === 'undefined') {
 				return createElement(BlockEdit, props);
 			}
 
@@ -122,14 +118,10 @@ if (!window.simpleBlockAnimationsAttributesFiltersAdded) {
 	}, 'withAnimationControls');
 
 	/**
-	 * Add animation classes and styles to core and meta-box blocks
+	 * Add animation classes and styles to all blocks
 	 */
 	function addAnimationClasses(props, blockType, attributes) {
-		// Only apply to core and meta-box blocks
-		if (!blockType.name.startsWith('core/') && !blockType.name.startsWith('meta-box/')) {
-			return props;
-		}
-
+		// Apply to all blocks
 		const { isAnimated, animationType, animationDuration, animationDelay } = attributes;
 
 		if (isAnimated) {

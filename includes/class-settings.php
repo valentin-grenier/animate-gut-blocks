@@ -62,14 +62,6 @@ class SIMPBLAN_Settings {
 		);
 
 		add_settings_field(
-			'enabled_block_types',
-			__( 'Types de blocs supportés', 'simple-block-animations' ),
-			array( __CLASS__, 'render_block_types_field' ),
-			'simple-block-animations',
-			'simpblan_main'
-		);
-
-		add_settings_field(
 			'default_duration',
 			__( 'Durée par défaut', 'simple-block-animations' ),
 			array( __CLASS__, 'render_default_duration_field' ),
@@ -85,9 +77,8 @@ class SIMPBLAN_Settings {
 	 */
 	private static function get_default_settings() {
 		return array(
-			'enabled_block_types' => array( 'core', 'meta-box' ),
-			'default_duration'    => 0.6,
-			'default_delay'       => 0,
+			'default_duration' => 0.6,
+			'default_delay'    => 0,
 		);
 	}
 
@@ -99,10 +90,6 @@ class SIMPBLAN_Settings {
 	 */
 	public static function sanitize_settings( $input ) {
 		$sanitized = array();
-
-		if ( isset( $input['enabled_block_types'] ) && is_array( $input['enabled_block_types'] ) ) {
-			$sanitized['enabled_block_types'] = array_map( 'sanitize_text_field', $input['enabled_block_types'] );
-		}
 
 		if ( isset( $input['default_duration'] ) ) {
 			$sanitized['default_duration'] = (float) $input['default_duration'];
@@ -142,25 +129,7 @@ class SIMPBLAN_Settings {
 	 * Render main section description
 	 */
 	public static function render_main_section() {
-		echo '<p>' . esc_html__( 'Configurez les options par défaut pour les animations de blocs.', 'simple-block-animations' ) . '</p>';
-	}
-
-	/**
-	 * Render block types field
-	 */
-	public static function render_block_types_field() {
-		$options = get_option( self::OPTION_NAME, self::get_default_settings() );
-		$enabled = $options['enabled_block_types'] ?? array( 'core', 'meta-box' );
-		?>
-		<label>
-			<input type="checkbox" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[enabled_block_types][]" value="core" <?php checked( in_array( 'core', $enabled, true ) ); ?>>
-			<?php esc_html_e( 'Blocs WordPress Core', 'simple-block-animations' ); ?>
-		</label><br>
-		<label>
-			<input type="checkbox" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[enabled_block_types][]" value="meta-box" <?php checked( in_array( 'meta-box', $enabled, true ) ); ?>>
-			<?php esc_html_e( 'Blocs Meta Box', 'simple-block-animations' ); ?>
-		</label>
-		<?php
+		echo '<p>' . esc_html__( 'Configurez les options par défaut pour les animations de blocs. Les animations sont maintenant supportées pour tous les types de blocs.', 'simple-block-animations' ) . '</p>';
 	}
 
 	/**

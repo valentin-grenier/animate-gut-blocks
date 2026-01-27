@@ -18,14 +18,14 @@ Simple block animations adds scroll-triggered animations to WordPress Gutenberg 
 
 * 5 animation types (fade, slide up/down/left/right)
 * Customizable duration and delay
-* Works with all core blocks
+* Works with all blocks (core, third-party, and custom blocks)
 * Lightweight (CSS + Intersection Observer)
 * No jQuery or heavy libraries
 * Accessibility-friendly (respects prefers-reduced-motion)
 
 **Supported Blocks:**
 
-Works with all WordPress core blocks and Meta Box blocks.
+Works with all WordPress blocks, including core blocks, third-party blocks, and custom blocks.
 
 **Development:**
 
