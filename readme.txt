@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, animation, scroll, effects
 Requires at least: 5.8
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,6 +69,10 @@ It's designed for Gutenberg blocks. It won't work with Elementor, Divi, or other
 4. Example of fade-in animation
 
 == Changelog ==
+
+= 1.2.1 =
+- Added dynamic blocks support
+
 
 = 1.2.0 =
 - Added support for dynamic blocks

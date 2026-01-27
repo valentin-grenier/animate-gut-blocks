@@ -297,55 +297,43 @@ $COMMIT_MESSAGE"
     
     svn ci -m "$SVN_COMMIT_MSG"
     
-    # Check if tag already exists
+    # Check if tag already exists and auto-increment if needed
+    FINAL_VERSION=$VERSION
     if svn ls "$SVN_URL/tags/$VERSION" > /dev/null 2>&1; then
         echo ""
-        echo "⚠️  Tag $VERSION already exists in repository!"
-        echo "This usually means the version was already released."
-        echo ""
-        echo "Options:"
-        echo "  1) Skip tag creation (trunk updated only)"
-        echo "  2) Delete and recreate tag (⚠️  use with caution)"
-        echo "  3) Cancel deployment"
-        echo ""
-        read -p "Enter choice (1-3): " -n 1 -r TAG_CHOICE
-        echo
+        echo "⚠️  Tag $VERSION already exists!"
+        echo "🔄 Auto-incrementing to next patch version..."
         
-        case $TAG_CHOICE in
-            1)
-                echo "✅ Trunk updated, skipping tag creation"
-                exit 0
-                ;;
-            2)
-                echo "🗑️  Removing existing tag..."
-                svn rm "$SVN_URL/tags/$VERSION" -m "Removing tag $VERSION for recreation"
-                ;;
-            3)
-                echo "❌ Deployment cancelled"
-                exit 1
-                ;;
-            *)
-                echo "❌ Invalid choice. Deployment cancelled."
-                exit 1
-                ;;
-        esac
+        # Extract version parts
+        MAJOR=$(echo $VERSION | cut -d. -f1)
+        MINOR=$(echo $VERSION | cut -d. -f2)
+        PATCH=$(echo $VERSION | cut -d. -f3)
+        
+        # Increment patch version until we find an unused tag
+        while svn ls "$SVN_URL/tags/$MAJOR.$MINOR.$PATCH" > /dev/null 2>&1; do
+            PATCH=$((PATCH + 1))
+        done
+        
+        FINAL_VERSION="$MAJOR.$MINOR.$PATCH"
+        echo "✅ Using version $FINAL_VERSION instead"
+        echo ""
     fi
     
     # Create tag from trunk URL (not local trunk)
-    echo "🏷️  Creating tag $VERSION..."
-    TAG_MSG="Tagging version $VERSION - $RELEASE_NAME release
+    echo "🏷️  Creating tag $FINAL_VERSION..."
+    TAG_MSG="Tagging version $FINAL_VERSION - $RELEASE_NAME release
 
 $COMMIT_MESSAGE"
-    svn cp "$SVN_URL/trunk" "$SVN_URL/tags/$VERSION" -m "$TAG_MSG"
+    svn cp "$SVN_URL/trunk" "$SVN_URL/tags/$FINAL_VERSION" -m "$TAG_MSG"
     
     echo ""
     echo "✅ Deployment completed successfully!"
     echo ""
     echo "📦 Summary:"
     echo "   Plugin: $PLUGIN_SLUG"
-    echo "   Version: $CURRENT_VERSION → $VERSION"
+    echo "   Version: $CURRENT_VERSION → $FINAL_VERSION"
     echo "   Release Type: $RELEASE_NAME"
-    echo "   SVN Tag: $SVN_URL/tags/$VERSION"
+    echo "   SVN Tag: $SVN_URL/tags/$FINAL_VERSION"
     echo ""
 else
     echo "❌ Deployment cancelled"
