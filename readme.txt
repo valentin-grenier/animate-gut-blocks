@@ -1,4 +1,4 @@
-=== Simple block animations ===
+=== Simple Block Animations ===
 Contributors: valentingrenier
 Tags: gutenberg, blocks, animation, scroll, effects
 Requires at least: 5.8
