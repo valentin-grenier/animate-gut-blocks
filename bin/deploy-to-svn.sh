@@ -142,6 +142,65 @@ echo "$COMMIT_MESSAGE"
 echo "---"
 echo ""
 
+# Function to update changelog in readme.txt
+update_readme_changelog() {
+    local readme_file="$1"
+    local version="$2"
+    local changelog="$3"
+    
+    if [ ! -f "$readme_file" ]; then
+        echo "⚠️  readme.txt not found, skipping changelog update"
+        return
+    fi
+    
+    # Check if changelog section exists
+    if ! grep -q "== Changelog ==" "$readme_file"; then
+        echo "⚠️  Changelog section not found in readme.txt"
+        return
+    fi
+    
+    # Format the changelog entry
+    local changelog_entry="= $version =\n"
+    
+    # Process each line of the commit message
+    while IFS= read -r line; do
+        # If line doesn't start with * or -, add it
+        if [[ "$line" =~ ^[*-] ]]; then
+            changelog_entry+="$line\n"
+        else
+            # Add * prefix if not empty
+            if [ -n "$line" ]; then
+                changelog_entry+="* $line\n"
+            fi
+        fi
+    done <<< "$changelog"
+    
+    # Create a temporary file
+    local temp_file=$(mktemp)
+    
+    # Insert new changelog entry after "== Changelog =="
+    awk -v entry="$changelog_entry" '
+        /^== Changelog ==/ {
+            print $0
+            print ""
+            printf "%s", entry
+            print ""
+            next
+        }
+        { print }
+    ' "$readme_file" > "$temp_file"
+    
+    # Replace original file
+    mv "$temp_file" "$readme_file"
+    
+    echo "✅ Updated Changelog section in readme.txt"
+}
+
+# Update readme.txt with changelog
+if [ -f "$PLUGIN_DIR/readme.txt" ]; then
+    update_readme_changelog "$PLUGIN_DIR/readme.txt" "$VERSION" "$COMMIT_MESSAGE"
+fi
+
 # Build the project
 echo "🔨 Building project..."
 cd "$PLUGIN_DIR"

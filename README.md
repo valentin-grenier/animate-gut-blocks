@@ -111,13 +111,18 @@ Absolutely! Simply toggle off the animation option in the block settings panel f
 
 Yes! The plugin works with any properly coded WordPress theme that supports the block editor.
 
+### Does this work with dynamic/server-side rendered blocks?
+
+Yes! The plugin automatically handles animations for all blocks, including custom blocks with PHP rendering (render_callback). No additional code is required.
+
 ## Technical Details
 
 * Uses WordPress hooks and filters for block modification
 * Leverages the Intersection Observer API for efficient scroll detection
-* Adds data attributes to animated blocks for JavaScript targeting
+* Automatically adds animation classes, styles, and data attributes to all blocks
 * CSS animations with GPU acceleration for smooth performance
 * Compatible with WordPress 5.8 and higher
+* Works seamlessly with dynamic blocks via the render_block filter
 
 ## Development
 

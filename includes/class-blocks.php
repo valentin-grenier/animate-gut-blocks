@@ -34,17 +34,69 @@ class SIMPBLAN_Blocks {
 			return $block_content;
 		}
 
-		// Add data attributes for JS
-		$animation_type = $block['attrs']['animationType'] ?? 'fade-in';
-		$data_attr      = sprintf(
+		// Get animation attributes
+		$animation_type     = $block['attrs']['animationType'] ?? 'fade-in';
+		$animation_duration = $block['attrs']['animationDuration'] ?? 0.6;
+		$animation_delay    = $block['attrs']['animationDelay'] ?? 0;
+
+		// Build animation class and data attributes
+		$animation_class = 'animate-' . esc_attr( $animation_type );
+		$data_attr       = sprintf(
 			' data-animation="%s"',
 			esc_attr( $animation_type )
 		);
+		
+		// Build inline styles for animation
+		$inline_style = sprintf(
+			'--animation-duration:%ss;--animation-delay:%ss;',
+			esc_attr( $animation_duration ),
+			esc_attr( $animation_delay )
+		);
 
-		// Insert data attribute into opening tag
-		$block_content = preg_replace(
-			'/^(<[a-z][a-z0-9]*)/i',
-			'$1' . $data_attr,
+		// Check if block content has an opening tag
+		if ( empty( trim( $block_content ) ) ) {
+			return $block_content;
+		}
+
+		// Insert class, style, and data attribute into opening tag
+		$block_content = preg_replace_callback(
+			'/^(<[a-z][a-z0-9]*)((?:\s+[^>]*)?)(>)/i',
+			function ( $matches ) use ( $animation_class, $data_attr, $inline_style ) {
+				$tag        = $matches[1];
+				$attributes = $matches[2];
+				$close      = $matches[3];
+
+				// Add animation class
+				if ( preg_match( '/class=["\']([^"\']*)["\']/', $attributes ) ) {
+					// Class attribute exists, append to it
+					$attributes = preg_replace(
+						'/class=["\']([^"\']*)["\']/',
+						'class="$1 ' . $animation_class . '"',
+						$attributes
+					);
+				} else {
+					// No class attribute, add it
+					$attributes .= ' class="' . $animation_class . '"';
+				}
+
+				// Add or append to style attribute
+				if ( preg_match( '/style=["\']([^"\']*)["\']/', $attributes ) ) {
+					// Style attribute exists, append to it
+					$attributes = preg_replace(
+						'/style=["\']([^"\']*)["\']/',
+						'style="$1' . $inline_style . '"',
+						$attributes
+					);
+				} else {
+					// No style attribute, add it
+					$attributes .= ' style="' . $inline_style . '"';
+				}
+
+				// Add data attribute
+				$attributes .= $data_attr;
+
+				return $tag . $attributes . $close;
+			},
 			$block_content,
 			1
 		);
