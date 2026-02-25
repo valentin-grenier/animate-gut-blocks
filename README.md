@@ -225,7 +225,7 @@ This project is licensed under the GPLv2 or later - see the [LICENSE](LICENSE) f
 
 ## Credits
 
-Developed by [Valentin Grenier](https://github.com/valentin-grenier) - Studio Val
+Developed by [Valentin Grenier](https://github.com/valentin-grenier) - [Studio Val](https://studio-val.fr)
 
 ## Support
 
