@@ -22,6 +22,7 @@ composer.lock
 /src
 
 # Build tools and configs
+/bin
 /phpcs.xml.dist
 /.phpcs.xml
 /.phpcs.xml.dist

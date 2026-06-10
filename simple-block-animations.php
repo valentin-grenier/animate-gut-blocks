@@ -7,7 +7,7 @@
  * Version: 2.0.7
  * Requires at least: 
  * Requires PHP: 
- * Tested up to: 6.9
+ * Tested up to: 7.0
  * Author: Valentin Grenier
  * Author URI: https://www.linkedin.com/in/valentin-grenier/
  * License: GPL v2 or later
