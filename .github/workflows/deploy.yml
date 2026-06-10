@@ -1,0 +1,47 @@
+name: Deploy to WordPress.org
+
+# Déploie le plugin sur le SVN WordPress.org via l'action officielle 10up.
+# Déclenché à la publication d'une Release GitHub : le tag de la Release
+# (ex. « 2.0.8 », SANS préfixe « v ») devient la version SVN et doit
+# correspondre exactement au « Stable tag » du readme.txt.
+#
+# Secrets requis (Settings > Secrets and variables > Actions) :
+#   - SVN_USERNAME : identifiant WordPress.org
+#   - SVN_PASSWORD : mot de passe WordPress.org
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Build and deploy to WordPress.org SVN
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # npm install (et non npm ci) car aucun package-lock.json n'est commité
+      # (le .gitignore ignore *-lock.json). Pas de cache npm pour la même raison.
+      - name: Install dependencies
+        run: npm install
+
+      # Génère le dossier build/ (gitignoré, donc absent du dépôt).
+      # Le .distignore garde build/ et exclut src/, node_modules, package.json…
+      - name: Build production assets
+        run: npm run build
+
+      - name: Deploy to WordPress.org
+        uses: 10up/action-wordpress-plugin-deploy@stable
+        env:
+          SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
+          SLUG: simple-block-animations

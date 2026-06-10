@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# ──────────────────────────────────────────────────────────────────────────
+# NOTE : Le déploiement OFFICIEL vers WordPress.org passe désormais par
+# GitHub Actions (.github/workflows/deploy.yml, action 10up) et se déclenche
+# à la publication d'une Release GitHub.
+#
+# Ce script reste disponible comme solution de secours / pour un déploiement
+# manuel local, mais ne l'utilise pas en parallèle d'une Release GitHub pour
+# la même version (cela créerait un double commit/tag SVN).
+# ──────────────────────────────────────────────────────────────────────────
+
 # Exit on error
 set -e
 
