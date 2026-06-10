@@ -35,6 +35,7 @@ composer.lock
 
 # Documentation
 README.md
+CLAUDE.md
 CHANGELOG.md
 /docs
 
