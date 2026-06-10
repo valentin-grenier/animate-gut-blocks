@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name: Simple block animations
- * Plugin URI: https://github.com/valentin-grenier/simple-animations-for-gutenberg
+ * Plugin URI: https://github.com/valentin-grenier/simple-block-animations
  * Description: Easily add animations to your Gutenberg blocks without coding.
  * Version: 2.0.7
  * Requires at least: 

@@ -29,7 +29,7 @@ Works with all WordPress blocks, including core blocks, third-party blocks, and 
 
 **Development:**
 
-The source code for this plugin is available on GitHub: https://github.com/valentin-grenier/simple-animations-for-gutenberg
+The source code for this plugin is available on GitHub: https://github.com/valentin-grenier/simple-block-animations
 
 The plugin uses npm and webpack to compile JavaScript and CSS files. Source files are located in the `src/` directory, and compiled files are in the `build/` directory.
 
@@ -75,19 +75,8 @@ Yes! Developers can add animation attributes to their block.json file. Add `isAn
 == Changelog ==
 
 = 2.0.7 =
-- Prepared plugin for 7.0 version
-
-
-= 2.0.6 =
-- Prepared plugin for 7.0 version
-
-
-= 2.0.5 =
-- Prepared plugin for 7.0 version
-
-
-= 2.0.4 =
-- Prepared plugin for 7.0 version
+- Prepared plugin for WordPress 7.0 compatibility
+- Fixed missing editor script dependencies
 
 
 = 2.0.2 =

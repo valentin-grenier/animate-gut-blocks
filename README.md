@@ -45,13 +45,13 @@ Simple block animations is perfect for creating engaging, modern websites with m
 
    ```bash
    cd wp-content/plugins
-   git clone https://github.com/valentin-grenier/simple-animations-for-gutenberg.git
+   git clone https://github.com/valentin-grenier/simple-block-animations.git
    ```
 
 2. Install dependencies:
 
    ```bash
-   cd simple-animations-for-gutenberg
+   cd simple-block-animations
    composer install
    npm install
    ```
@@ -229,4 +229,4 @@ Developed by [Valentin Grenier](https://github.com/valentin-grenier) - [Studio V
 
 ## Support
 
-For issues, questions, or suggestions, please [open an issue](https://github.com/valentin-grenier/simple-animations-for-gutenberg/issues) on GitHub.
+For issues, questions, or suggestions, please [open an issue](https://github.com/valentin-grenier/simple-block-animations/issues) on GitHub.
