@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, animation, scroll, effects
 Requires at least: 5.8
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 2.0.2
+Stable tag: 2.0.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,6 +73,22 @@ Yes! Developers can add animation attributes to their block.json file. Add `isAn
 4. Example of fade-in animation
 
 == Changelog ==
+
+= 2.0.7 =
+- Prepared plugin for 7.0 version
+
+
+= 2.0.6 =
+- Prepared plugin for 7.0 version
+
+
+= 2.0.5 =
+- Prepared plugin for 7.0 version
+
+
+= 2.0.4 =
+- Prepared plugin for 7.0 version
+
 
 = 2.0.2 =
 - Updated documentation with "For developers" section regarding default animation attributes for custom blocks
