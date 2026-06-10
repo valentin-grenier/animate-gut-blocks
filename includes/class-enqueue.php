@@ -30,11 +30,7 @@ class SIMPBLAN_Enqueue {
 		wp_enqueue_script(
 			'simple-block-animations-editor',
 			SIMPBLAN_URL . 'build/editor.js',
-			array(
-				'wp-blocks',
-				'wp-dom',
-				'wp-i18n'
-			),
+			array( 'wp-blocks', 'wp-dom', 'wp-i18n', 'wp-hooks', 'wp-compose', 'wp-element', 'wp-block-editor', 'wp-components' ),
 			SIMPBLAN_VERSION,
 			true
 		);
