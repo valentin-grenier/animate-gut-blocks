@@ -68,6 +68,14 @@ class SIMPBLAN_Settings {
 			'simple-block-animations',
 			'simpblan_main'
 		);
+
+		add_settings_field(
+			'default_delay',
+			__( 'Délai par défaut', 'simple-block-animations' ),
+			array( __CLASS__, 'render_default_delay_field' ),
+			'simple-block-animations',
+			'simpblan_main'
+		);
 	}
 
 	/**
@@ -141,6 +149,18 @@ class SIMPBLAN_Settings {
 		?>
 		<input type="number" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[default_duration]" value="<?php echo esc_attr( $duration ); ?>" min="0.2" max="2" step="0.1">
 		<p class="description"><?php esc_html_e( 'Durée par défaut des animations en secondes (0.2 - 2)', 'simple-block-animations' ); ?></p>
+		<?php
+	}
+
+	/**
+	 * Render default delay field
+	 */
+	public static function render_default_delay_field() {
+		$options = get_option( self::OPTION_NAME, self::get_default_settings() );
+		$delay   = $options['default_delay'] ?? 0;
+		?>
+		<input type="number" name="<?php echo esc_attr( self::OPTION_NAME ); ?>[default_delay]" value="<?php echo esc_attr( $delay ); ?>" min="0" max="1" step="0.1">
+		<p class="description"><?php esc_html_e( 'Délai par défaut avant le déclenchement, en secondes (0 - 1)', 'simple-block-animations' ); ?></p>
 		<?php
 	}
 
