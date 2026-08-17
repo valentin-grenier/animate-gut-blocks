@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 /**
  * Plugin Name: Simple block animations
  * Plugin URI: https://github.com/valentin-grenier/simple-block-animations
@@ -14,11 +13,13 @@
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: simple-block-animations
  * Domain Path: /languages
+ *
+ * @package SIMPBLAN
  */
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
 define( 'SIMPBLAN_VERSION', '2.1.0' );
@@ -43,7 +44,7 @@ add_action( 'plugins_loaded', 'simpblan_init' );
  * Activation hook
  */
 function simpblan_activate() {
-	// Set default options
+	// Set default options.
 	if ( ! get_option( SIMPBLAN_Settings::OPTION_NAME ) ) {
 		add_option(
 			SIMPBLAN_Settings::OPTION_NAME,
