@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, animation, scroll, effects
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 2.0.8
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,6 +77,15 @@ No. Block attribute defaults are resolved when a block is inserted, so changing 
 4. Example of fade-in animation
 
 == Changelog ==
+
+= 2.1.0 =
+* Fixed: animations now load for dynamic blocks, block templates, template parts and synced patterns
+* Fixed: prefers-reduced-motion is now respected
+* Fixed: editor strings were untranslatable due to a text domain mismatch
+* Added: zoom in and slide up animations
+* Added: the default duration and delay settings now apply to newly inserted blocks
+* Changed: requires WordPress 6.2 or later
+* Tested up to WordPress 7.1
 
 = 2.0.8 =
 * Tested and confirmed compatible with WordPress 7.0
