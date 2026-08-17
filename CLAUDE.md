@@ -18,10 +18,18 @@ and respects `prefers-reduced-motion`.
 PHP runtime (`includes/`, prefix `SIMPBLAN_` / `simpblan_`):
 - `simple-block-animations.php` — bootstrap: defines `SIMPBLAN_VERSION` and paths,
   requires the classes, wires `plugins_loaded` + activation/deactivation hooks.
-- `includes/class-enqueue.php` (`SIMPBLAN_Enqueue`) — enqueues the editor/frontend
-  assets from `build/`.
-- `includes/class-blocks.php` (`SIMPBLAN_Blocks`) — adds the animation attributes to
-  blocks; honours defaults declared in a block's own `block.json`.
+- `includes/class-enqueue.php` (`SIMPBLAN_Enqueue`) — enqueues the editor assets and
+  *registers* the frontend ones from `build/`. The frontend assets are enqueued on
+  demand by `SIMPBLAN_Blocks` when an animated block actually renders, so dynamic
+  blocks, block templates, template parts and synced patterns are all covered. The
+  initial hidden state is printed inline in `wp_head` (behind an `html.simpblan-js`
+  class) so the late stylesheet cannot cause a flash, and content stays visible
+  without JavaScript.
+- `includes/class-blocks.php` (`SIMPBLAN_Blocks`) — on `render_block`, adds the
+  animation class, custom properties and `data-animation` via `WP_HTML_Tag_Processor`
+  (hence `Requires at least: 6.2`). `get_animation_types()` is the whitelist of
+  supported types. Editor-side attributes are added by `src/js/editor.js`, which
+  honours defaults declared in a block's own `block.json`.
 - `includes/class-settings.php` (`SIMPBLAN_Settings`) — options (`default_duration`,
   `default_delay`).
 

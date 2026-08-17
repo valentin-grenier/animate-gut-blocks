@@ -1,8 +1,8 @@
 === Simple Block Animations ===
 Contributors: valentingrenier
 Tags: gutenberg, blocks, animation, scroll, effects
-Requires at least: 5.8
-Tested up to: 7.0
+Requires at least: 6.2
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 2.0.8
 License: GPLv2 or later
@@ -16,7 +16,7 @@ Simple block animations adds scroll-triggered animations to WordPress Gutenberg 
 
 **Features:**
 
-* 5 animation types (fade, slide up/down/left/right)
+* 7 animation types (fade, fade up/down/left/right, zoom in, slide up)
 * Customizable duration and delay
 * Works with all blocks (core, third-party, and custom blocks)
 * Lightweight (CSS + Intersection Observer)
@@ -63,7 +63,11 @@ It's designed for Gutenberg blocks. It won't work with Elementor, Divi, or other
 
 = Can I set default animations for my custom blocks? =
 
-Yes! Developers can add animation attributes to their block.json file. Add `isAnimated`, `animationType`, `animationDuration`, and `animationDelay` attributes with your desired defaults. The plugin will respect these values, automatically enabling animations when the block is inserted. Available animation types: fade-in, fade-in-up, fade-in-down, fade-in-left, fade-in-right.
+Yes! Developers can add animation attributes to their block.json file. Add `isAnimated`, `animationType`, `animationDuration`, and `animationDelay` attributes with your desired defaults. The plugin will respect these values, automatically enabling animations when the block is inserted. Available animation types: fade-in, fade-in-up, fade-in-down, fade-in-left, fade-in-right, zoom-in, slide-up.
+
+= Do the default duration and delay settings affect existing blocks? =
+
+No. Block attribute defaults are resolved when a block is inserted, so changing the defaults on the settings page only applies to blocks you add afterwards. Blocks already in your content keep the values saved with them, which you can still change individually in the block sidebar.
 
 == Screenshots ==
 
