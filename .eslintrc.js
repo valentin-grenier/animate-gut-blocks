@@ -1,7 +1,5 @@
 module.exports = {
-	extends: [
-		'plugin:@wordpress/eslint-plugin/recommended',
-	],
+	extends: [ 'plugin:@wordpress/eslint-plugin/recommended' ],
 	env: {
 		browser: true,
 		es2021: true,
@@ -25,9 +23,12 @@ module.exports = {
 		'no-unused-vars': 'warn',
 		'prefer-const': 'error',
 		'no-var': 'error',
-		'@wordpress/i18n-text-domain': ['error', {
-			allowedTextDomain: 'simple_block_animations',
-		}],
+		'@wordpress/i18n-text-domain': [
+			'error',
+			{
+				allowedTextDomain: 'simple-block-animations',
+			},
+		],
 	},
 	settings: {
 		react: {
