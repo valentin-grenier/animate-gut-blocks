@@ -1,6 +1,6 @@
 import '../scss/frontend.scss';
 
-document.addEventListener('DOMContentLoaded', () => {
+function initAnimations() {
 	const animatedBlocks = document.querySelectorAll('[class*="animate-"]');
 	if (!animatedBlocks.length) return;
 
@@ -21,4 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	animatedBlocks.forEach((block) => {
 		observer.observe(block);
 	});
-});
+}
+
+// The script is enqueued while blocks render, so DOMContentLoaded may already be past.
+if (document.readyState === 'loading') {
+	document.addEventListener('DOMContentLoaded', initAnimations);
+} else {
+	initAnimations();
+}
